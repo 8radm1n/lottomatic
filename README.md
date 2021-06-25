@@ -1,2 +1,2 @@
 # lottomatic
-Genrate the winning lotto numbers
+Generate the winning lotto numbers
