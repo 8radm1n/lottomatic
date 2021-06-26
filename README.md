@@ -1,6 +1,8 @@
 # lottomatic
 Generate the winning lotto numbers
 
+## Download
+Binaries for Windows and Linux can be downloaded [here](https://github.com/bwks/lottomatic/releases/latest).
 
 ## Usage
 ```
