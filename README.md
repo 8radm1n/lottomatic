@@ -21,7 +21,6 @@ Usage: ./lottomatic
 ```
 
 ## Examples
-
 With the defaults
 ```
 ./lottomatic
@@ -31,7 +30,7 @@ With the defaults
 10 15 17 23 26 32 33 | 2 
 ```
 
-With `40` numbers in the main pool, `0` supplementry or powerball numbers and `10` games
+With `40` numbers in the main pool and `6` numbers in the draw. `0` supplementry or powerball numbers and `10` games
 ```
 ./lottomatic -M 40 -m 6 -S 0 -g 10
 1  12 22 23 29 36 
