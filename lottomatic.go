@@ -28,7 +28,9 @@ func generate(poolSize int, main int, supSize int, sups int) winning {
 	return w
 }
 
-// getNumbers
+// getNumbers returns a random sorted slice of ints
+// from a range of 1 to size. howMany is used to
+// determine the number of elements in the slice.
 func getNumbers(size int, howMany int) []int {
 	low := 1
 	numbers := []int{}
