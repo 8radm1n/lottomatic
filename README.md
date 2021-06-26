@@ -6,13 +6,22 @@ Generate the winning lotto numbers
 ```
 ./lottomatic -h
 Usage: ./lottomatic
-  -d    do the supplementary numbers come from the same pool as the main numbers
+  -M int
+        numbers in the main pool of numbers (default 35)
+  -S int
+        numbers in the pool of supplementary numbers (default 20)
   -g int
         number of games to play (default 4)
   -m int
-        numbers in the main pool of numbers (default 7)
-  -p int
-        numbers in the pool of numbers (default 50)
+        number of main numbers (default 7)
   -s int
-        numbers in the supplementary pool of numbers (default 1)
+        number of supplementary numbers (default 1)
+```
+
+```
+./bin/lottomatic -M 35 -m 7 -S 20 -s 1
+2  3  6  12 19 29 34 | 1 
+2  17 18 21 26 29 33 | 8 
+10 18 22 23 24 33 34 | 14 
+10 15 17 23 26 32 33 | 2 
 ```
