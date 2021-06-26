@@ -15,46 +15,33 @@ type winning struct {
 // generate a random slices of numbers
 // poolSize: the larget number in the pool
 // main: the number of numbers in the main pool
+// supSize: the larget number in the supplementary pool
 // sups: the number of supplementary numbers or powerballs
 // dupSup: do the supplementary numbers come from the same
 // pool or a different pool to the main numbers
 // returns a struct of winning numbers
-func generate(poolSize int, main int, sups int, dupSup bool) winning {
-	low := 1
-	high := poolSize
-	w := winning{}
+func generate(poolSize int, main int, supSize int, sups int) winning {
 
+	w := winning{}
+	w.numbers = getNumbers(poolSize, main)
+	if supSize > 0 {
+		w.supplementaries = getNumbers(supSize, sups)
+	}
+	return w
+}
+
+// getNumbers
+func getNumbers(size int, howMany int) []int {
+	low := 1
 	numbers := []int{}
-	for i := 0; len(numbers) < main; i++ {
-		n := randomNumber(low, high)
+	for i := 0; len(numbers) < howMany; i++ {
+		n := randomNumber(low, size)
 		if !find(numbers, n) {
 			numbers = append(numbers, n)
 		}
 	}
 	sort.Ints(numbers)
-	w.numbers = numbers
-
-	supplementaries := []int{}
-	for i := 0; len(supplementaries) < sups; i++ {
-		n := randomNumber(low, high)
-		if dupSup {
-			// Supplementary numbers are drawn from a
-			// separate pool to main numbers
-			if !find(supplementaries, n) {
-				supplementaries = append(supplementaries, n)
-			}
-		} else {
-			// Supplementary numbers are drawn from the
-			// same pool as the main numbers
-			if !find(numbers, n) && !find(supplementaries, n) {
-				supplementaries = append(supplementaries, n)
-			}
-		}
-	}
-	sort.Ints(supplementaries)
-	w.supplementaries = supplementaries
-
-	return w
+	return numbers
 }
 
 // randomNumber returns a random number

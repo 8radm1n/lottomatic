@@ -7,10 +7,10 @@ import (
 )
 
 var (
-	poolSize = flag.Int("p", 50, "numbers in the pool of numbers")
-	mainN    = flag.Int("m", 7, "numbers in the main pool of numbers")
-	supN     = flag.Int("s", 1, "numbers in the supplementary pool of numbers")
-	dup      = flag.Bool("d", false, "do the supplementary numbers come from the same pool as the main numbers")
+	poolSize = flag.Int("M", 35, "numbers in the main pool of numbers")
+	mainN    = flag.Int("m", 7, "number of main numbers")
+	supSize  = flag.Int("S", 20, "numbers in the pool of supplementary numbers")
+	supN     = flag.Int("s", 1, "number of supplementary numbers")
 	games    = flag.Int("g", 4, "number of games to play")
 )
 
@@ -25,8 +25,7 @@ func main() {
 	flag.Parse()
 
 	for i := 1; i <= *games; i++ {
-		w := generate(*poolSize, *mainN, *supN, *dup)
-		fmt.Printf("%d: ", i)
+		w := generate(*poolSize, *mainN, *supSize, *supN)
 		for _, n := range w.numbers {
 			spaces := " "
 			if n < 10 {
