@@ -7,11 +7,11 @@ import (
 )
 
 var (
-	poolSize = flag.Int("M", 35, "numbers in the main pool of numbers")
-	mainN    = flag.Int("m", 7, "number of main numbers")
-	supSize  = flag.Int("S", 20, "numbers in the pool of supplementary numbers")
-	supN     = flag.Int("s", 1, "number of supplementary numbers")
-	games    = flag.Int("g", 4, "number of games to play")
+	mPool = flag.Int("M", 35, "amount of numbers in the main pool")
+	mNum  = flag.Int("m", 7, "amount of numbers to select from the main pool")
+	sPool = flag.Int("S", 20, "amount of numbers in the supplementary pool")
+	sNum  = flag.Int("s", 1, "amount of numbers to select from the supplementary pool")
+	games = flag.Int("g", 4, "number of games to play")
 )
 
 func init() {
@@ -25,7 +25,7 @@ func main() {
 	flag.Parse()
 
 	for i := 1; i <= *games; i++ {
-		w := generate(*poolSize, *mainN, *supSize, *supN)
+		w := generate(*mPool, *mNum, *sPool, *sNum)
 		for _, n := range w.numbers {
 			spaces := " "
 			if n < 10 {

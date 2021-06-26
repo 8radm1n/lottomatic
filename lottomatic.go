@@ -13,29 +13,29 @@ type winning struct {
 }
 
 // generate a random slices of numbers
-// poolSize: the larget number in the pool
-// main: the number of numbers in the main pool
-// supSize: the larget number in the supplementary pool
-// sups: the number of supplementary numbers or powerballs
+// mPool: amount of numbers in the main pool
+// mNum: amount of numbers to select from the main pool
+// sPool: amount of numbers in the supplementary pool
+// sNum: amount of numbers to select from the supplementary pool
 // returns a struct of winning numbers
-func generate(poolSize int, main int, supSize int, sups int) winning {
+func generate(mPool int, mNum int, sPool int, sNum int) winning {
 
 	w := winning{}
-	w.numbers = getNumbers(poolSize, main)
-	if supSize > 0 {
-		w.supplementaries = getNumbers(supSize, sups)
+	w.numbers = getNumbers(mPool, mNum)
+	if sPool > 0 {
+		w.supplementaries = getNumbers(sPool, sNum)
 	}
 	return w
 }
 
 // getNumbers returns a random sorted slice of ints
-// from a range of 1 to size. howMany is used to
+// from a range of 1 to high. howMany is used to
 // determine the number of elements in the slice.
-func getNumbers(size int, howMany int) []int {
+func getNumbers(high int, howMany int) []int {
 	low := 1
 	numbers := []int{}
 	for i := 0; len(numbers) < howMany; i++ {
-		n := randomNumber(low, size)
+		n := randomNumber(low, high)
 		if !find(numbers, n) {
 			numbers = append(numbers, n)
 		}
