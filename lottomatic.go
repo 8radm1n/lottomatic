@@ -17,8 +17,6 @@ type winning struct {
 // main: the number of numbers in the main pool
 // supSize: the larget number in the supplementary pool
 // sups: the number of supplementary numbers or powerballs
-// dupSup: do the supplementary numbers come from the same
-// pool or a different pool to the main numbers
 // returns a struct of winning numbers
 func generate(poolSize int, main int, supSize int, sups int) winning {
 
